@@ -408,7 +408,7 @@ const AdminDashboardPage = () => {
     { field: 'name', headerName: 'Name', flex: 1 },
     { field: 'stars', headerName: 'Stars', flex: 0.5, type: 'number' },
     { field: 'pricePerNight', headerName: 'Price/Night', flex: 1, type: 'number' },
-    { field: 'tour', headerName: 'Tour', flex: 1, valueGetter: (params) => params.row.tour?.name || '' },
+    { field: 'tour', headerName: 'Tour', flex: 1, valueGetter: (params) => (params.row && params.row.tour && params.row.tour.name) ? params.row.tour.name : '' },
     {
       field: 'actions',
       headerName: 'Actions',
@@ -427,7 +427,7 @@ const AdminDashboardPage = () => {
     { field: 'from', headerName: 'From', flex: 1 },
     { field: 'to', headerName: 'To', flex: 1 },
     { field: 'price', headerName: 'Price', flex: 1, type: 'number' },
-    { field: 'tour', headerName: 'Tour', flex: 1, valueGetter: (params) => params.row.tour?.name || '' },
+    { field: 'tour', headerName: 'Tour', flex: 1, valueGetter: (params) => (params.row && params.row.tour && params.row.tour.name) ? params.row.tour.name : '' },
     {
       field: 'actions',
       headerName: 'Actions',
