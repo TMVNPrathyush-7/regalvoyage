@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Container, Card, CardContent, Typography, TextField, Button, Box, Alert, useMediaQuery, useTheme } from '@mui/material';
 import axios from 'axios';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const SignupPage = () => {
   const [name, setName] = useState('');
@@ -18,7 +19,7 @@ const SignupPage = () => {
     setError('');
     setLoading(true);
     try {
-      const res = await axios.post('/api/auth/signup', { name, email, password });
+      const res = await axios.post(`${API_URL}/api/auth/signup`, { name, email, password });
       // Auto-login after signup
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));

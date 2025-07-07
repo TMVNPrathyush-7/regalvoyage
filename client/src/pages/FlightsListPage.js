@@ -4,6 +4,7 @@ import {
   Box, Container, Typography, Grid, Card, CardContent, Button, TextField, MenuItem, Slider, CircularProgress, useMediaQuery, useTheme
 } from '@mui/material';
 import axios from 'axios';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const FlightsListPage = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const FlightsListPage = () => {
       setLoading(true);
       setError('');
       try {
-        const res = await axios.get('/api/tours/flights');
+        const res = await axios.get(`${API_URL}/api/tours/flights`);
         setFlights(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setError('Failed to load flights');

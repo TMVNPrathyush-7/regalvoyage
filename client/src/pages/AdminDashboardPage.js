@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Tabs, Tab, Box, Typography, Paper, Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, MenuItem, Select, InputLabel, FormControl, useMediaQuery, useTheme, Alert } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import axios from 'axios';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const AdminDashboardPage = () => {
   const [tab, setTab] = useState(0);
@@ -74,7 +75,7 @@ const AdminDashboardPage = () => {
   const fetchTours = async () => {
     setLoading(true);
     try {
-      const res = await axios.get('/api/tours');
+      const res = await axios.get(`${API_URL}/api/tours`);
       setTours(res.data);
     } catch (err) {
       // Handle error (show notification, etc.)
@@ -85,7 +86,7 @@ const AdminDashboardPage = () => {
   const fetchHotels = async () => {
     setHotelLoading(true);
     try {
-      const res = await axios.get('/api/tours/hotels');
+      const res = await axios.get(`${API_URL}/api/tours/hotels`);
       setHotels(res.data);
     } catch (err) {
       // Handle error
@@ -96,7 +97,7 @@ const AdminDashboardPage = () => {
   const fetchFlights = async () => {
     setFlightLoading(true);
     try {
-      const res = await axios.get('/api/tours/flights');
+      const res = await axios.get(`${API_URL}/api/tours/flights`);
       setFlights(res.data);
     } catch (err) {
       // Handle error
@@ -124,7 +125,7 @@ const AdminDashboardPage = () => {
     e.preventDefault();
     setAddError('');
     try {
-      await axios.post('/api/tours', {
+      await axios.post(`${API_URL}/api/tours`, {
         ...newTour,
         cost: Number(newTour.cost),
         date: new Date(newTour.date)
@@ -158,7 +159,7 @@ const AdminDashboardPage = () => {
     e.preventDefault();
     setEditError('');
     try {
-      await axios.put(`/api/tours/${editTour._id}`, {
+      await axios.put(`${API_URL}/api/tours/${editTour._id}`, {
         ...editTour,
         cost: Number(editTour.cost),
         date: new Date(editTour.date)
@@ -182,7 +183,7 @@ const AdminDashboardPage = () => {
   const handleDeleteConfirm = async () => {
     setDeleteError('');
     try {
-      await axios.delete(`/api/tours/${deleteTour._id}`, {
+      await axios.delete(`${API_URL}/api/tours/${deleteTour._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setDeleteOpen(false);
@@ -212,7 +213,7 @@ const AdminDashboardPage = () => {
     e.preventDefault();
     setAddHotelError('');
     try {
-      await axios.post(`/api/tours/${newHotel.tourId}/hotels`, {
+      await axios.post(`${API_URL}/api/tours/${newHotel.tourId}/hotels`, {
         name: newHotel.name,
         stars: Number(newHotel.stars),
         pricePerNight: Number(newHotel.pricePerNight),
@@ -253,7 +254,7 @@ const AdminDashboardPage = () => {
     e.preventDefault();
     setEditHotelError('');
     try {
-      await axios.put(`/api/tours/${editHotel.tourId}/hotels/${editHotel._id}`, {
+      await axios.put(`${API_URL}/api/tours/${editHotel.tourId}/hotels/${editHotel._id}`, {
         name: editHotel.name,
         stars: Number(editHotel.stars),
         pricePerNight: Number(editHotel.pricePerNight),
@@ -278,7 +279,7 @@ const AdminDashboardPage = () => {
   const handleDeleteHotelConfirm = async () => {
     setDeleteHotelError('');
     try {
-      await axios.delete(`/api/tours/${deleteHotel.tour._id}/hotels/${deleteHotel._id}`, {
+      await axios.delete(`${API_URL}/api/tours/${deleteHotel.tour._id}/hotels/${deleteHotel._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setDeleteHotelOpen(false);
@@ -308,7 +309,7 @@ const AdminDashboardPage = () => {
     e.preventDefault();
     setAddFlightError('');
     try {
-      await axios.post(`/api/tours/${newFlight.tourId}/flights`, {
+      await axios.post(`${API_URL}/api/tours/${newFlight.tourId}/flights`, {
         airline: newFlight.airline,
         from: newFlight.from,
         to: newFlight.to,
@@ -349,7 +350,7 @@ const AdminDashboardPage = () => {
     e.preventDefault();
     setEditFlightError('');
     try {
-      await axios.put(`/api/tours/${editFlight.tourId}/flights/${editFlight._id}`, {
+      await axios.put(`${API_URL}/api/tours/${editFlight.tourId}/flights/${editFlight._id}`, {
         airline: editFlight.airline,
         from: editFlight.from,
         to: editFlight.to,
@@ -375,7 +376,7 @@ const AdminDashboardPage = () => {
   const handleDeleteFlightConfirm = async () => {
     setDeleteFlightError('');
     try {
-      await axios.delete(`/api/tours/${deleteFlight.tour._id}/flights/${deleteFlight._id}`, {
+      await axios.delete(`${API_URL}/api/tours/${deleteFlight.tour._id}/flights/${deleteFlight._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setDeleteFlightOpen(false);

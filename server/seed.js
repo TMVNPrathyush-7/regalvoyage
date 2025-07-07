@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Tour = require('./models/tourModel');
 const User = require('./models/userModel');
 const bcrypt = require('bcryptjs');
-require('dotenv').config();
+require('dotenv').config({ path: __dirname + '/.env' });
 
 const tours = [
   {

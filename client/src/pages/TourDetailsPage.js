@@ -5,6 +5,8 @@ import axios from 'axios';
 import { getTours } from '../services/tourService';
 import { bookTour } from '../services/bookingService';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const TourDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -53,7 +55,7 @@ const TourDetailsPage = () => {
     setReviewLoading(true);
     setReviewError('');
     try {
-      const res = await axios.get(`/api/reviews?resourceType=tour&resourceId=${id}`);
+      const res = await axios.get(`${API_URL}/api/reviews?resourceType=tour&resourceId=${id}`);
       setReviews(res.data);
     } catch (err) {
       setReviewError('Failed to load reviews');
@@ -66,7 +68,7 @@ const TourDetailsPage = () => {
     setSubmitReviewError('');
     setSubmitReviewSuccess('');
     try {
-      await axios.post('/api/reviews', {
+      await axios.post(`${API_URL}/api/reviews`, {
         resourceType: 'tour',
         resourceId: id,
         rating: myRating,

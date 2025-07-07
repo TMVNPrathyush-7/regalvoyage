@@ -10,6 +10,8 @@ import LuggageIcon from '@mui/icons-material/Luggage';
 import { bookFlight } from '../services/bookingService';
 import Rating from '@mui/material/Rating';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const FlightDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -40,7 +42,7 @@ const FlightDetailsPage = () => {
       setLoading(true);
       setError('');
       try {
-        const res = await axios.get(`/api/tours/flights/${id}`);
+        const res = await axios.get(`${API_URL}/api/tours/flights/${id}`);
         setFlight(res.data);
         setTour(res.data.tour);
       } catch (err) {
@@ -61,7 +63,7 @@ const FlightDetailsPage = () => {
     setReviewLoading(true);
     setReviewError('');
     try {
-      const res = await axios.get(`/api/reviews?resourceType=flight&resourceId=${id}`);
+      const res = await axios.get(`${API_URL}/api/reviews?resourceType=flight&resourceId=${id}`);
       setReviews(res.data);
     } catch (err) {
       setReviewError('Failed to load reviews');
@@ -71,7 +73,7 @@ const FlightDetailsPage = () => {
 
   const fetchUserBookings = async () => {
     try {
-      const res = await axios.get(`/api/bookings/user`, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get(`${API_URL}/api/bookings/user`, { headers: { Authorization: `Bearer ${token}` } });
       setUserBookings(res.data);
     } catch {}
   };
@@ -104,7 +106,7 @@ const FlightDetailsPage = () => {
     setSubmitReviewError('');
     setSubmitReviewSuccess('');
     try {
-      await axios.post('/api/reviews', {
+      await axios.post(`${API_URL}/api/reviews`, {
         resourceType: 'flight',
         resourceId: id,
         rating: myRating,

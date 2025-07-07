@@ -11,6 +11,7 @@ import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import PriceCheckIcon from '@mui/icons-material/PriceCheck';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import axios from 'axios';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const TABS = [
   { label: 'Flights', icon: <FlightTakeoffIcon /> },
@@ -37,9 +38,9 @@ const HomePage = () => {
     async function fetchData() {
       setLoading(true);
       const [toursRes, flightsRes, hotelsRes] = await Promise.all([
-        axios.get('/api/tours'),
-        axios.get('/api/tours/flights'),
-        axios.get('/api/tours/hotels'),
+        axios.get(`${API_URL}/api/tours`),
+        axios.get(`${API_URL}/api/tours/flights`),
+        axios.get(`${API_URL}/api/tours/hotels`),
       ]);
       setTours(Array.isArray(toursRes.data) ? toursRes.data : []);
       setFlights(Array.isArray(flightsRes.data) ? flightsRes.data : []);

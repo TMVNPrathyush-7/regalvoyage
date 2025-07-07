@@ -6,6 +6,8 @@ import { getTours, bookTour } from '../services/tourService';
 import { bookHotel } from '../services/bookingService';
 import Rating from '@mui/material/Rating';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const HotelDetailsPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -36,7 +38,7 @@ const HotelDetailsPage = () => {
       setLoading(true);
       setError('');
       try {
-        const res = await axios.get(`/api/tours/hotels/${id}`);
+        const res = await axios.get(`${API_URL}/api/tours/hotels/${id}`);
         setHotel(res.data);
         setTour(res.data.tour);
       } catch (err) {
@@ -54,7 +56,7 @@ const HotelDetailsPage = () => {
     setReviewLoading(true);
     setReviewError('');
     try {
-      const res = await axios.get(`/api/reviews?resourceType=hotel&resourceId=${id}`);
+      const res = await axios.get(`${API_URL}/api/reviews?resourceType=hotel&resourceId=${id}`);
       setReviews(res.data);
     } catch (err) {
       setReviewError('Failed to load reviews');
@@ -64,7 +66,7 @@ const HotelDetailsPage = () => {
 
   const fetchUserBookings = async () => {
     try {
-      const res = await axios.get(`/api/bookings/user`, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get(`${API_URL}/api/bookings/user`, { headers: { Authorization: `Bearer ${token}` } });
       setUserBookings(res.data);
     } catch {}
   };
@@ -97,7 +99,7 @@ const HotelDetailsPage = () => {
     setSubmitReviewError('');
     setSubmitReviewSuccess('');
     try {
-      await axios.post('/api/reviews', {
+      await axios.post(`${API_URL}/api/reviews`, {
         resourceType: 'hotel',
         resourceId: id,
         rating: myRating,

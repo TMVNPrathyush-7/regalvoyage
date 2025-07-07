@@ -4,6 +4,7 @@ import {
   Box, Container, Typography, Grid, Card, CardContent, CardMedia, Button, TextField, MenuItem, Slider, CircularProgress, Rating, useMediaQuery, useTheme
 } from '@mui/material';
 import axios from 'axios';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const HotelsListPage = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const HotelsListPage = () => {
       setLoading(true);
       setError('');
       try {
-        const res = await axios.get('/api/tours/hotels');
+        const res = await axios.get(`${API_URL}/api/tours/hotels`);
         setHotels(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setError('Failed to load hotels');
