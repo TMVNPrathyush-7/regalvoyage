@@ -49,7 +49,7 @@ const TourListPage = () => {
       setError('');
       try {
         const res = await getTours();
-        setTours(res.data);
+        setTours(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setError('Failed to load tours');
       }
@@ -136,7 +136,7 @@ const TourListPage = () => {
               </Box>
             </Box>
             <Box sx={{ display: isMobile ? 'block' : 'flex', gap: isMobile ? 0 : 3, overflowX: isMobile ? 'unset' : 'auto', pb: 2, flexDirection: isMobile ? 'column' : 'row' }}>
-              {filteredTours.map(tour => (
+              {Array.isArray(filteredTours) && filteredTours.map(tour => (
                 <Card key={tour._id} sx={{ minWidth: isMobile ? '90vw' : 300, maxWidth: isMobile ? '95vw' : 320, borderRadius: 3, boxShadow: 3, mx: isMobile ? 'auto' : 0, mb: isMobile ? 2 : 0 }}>
                   <CardMedia
                     component="img"

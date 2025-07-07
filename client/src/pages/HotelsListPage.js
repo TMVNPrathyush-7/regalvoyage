@@ -24,7 +24,7 @@ const HotelsListPage = () => {
       setError('');
       try {
         const res = await axios.get('/api/tours/hotels');
-        setHotels(res.data);
+        setHotels(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setError('Failed to load hotels');
       }
@@ -110,7 +110,7 @@ const HotelsListPage = () => {
         <Typography color="error" mt={4}>{error}</Typography>
       ) : (
         <Grid container spacing={isMobile ? 1.5 : 3}>
-          {filteredHotels.map(hotel => (
+          {Array.isArray(hotels) && hotels.map(hotel => (
             <Grid item xs={12} sm={6} md={4} key={hotel._id}>
               <Card sx={{ borderRadius: 3, boxShadow: 2, minWidth: isMobile ? '90vw' : 0, maxWidth: isMobile ? '95vw' : 'none', mx: isMobile ? 'auto' : 0 }}>
                 {hotel.images?.[0] && (

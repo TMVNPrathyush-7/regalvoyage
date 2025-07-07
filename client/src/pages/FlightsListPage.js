@@ -25,7 +25,7 @@ const FlightsListPage = () => {
       setError('');
       try {
         const res = await axios.get('/api/tours/flights');
-        setFlights(res.data);
+        setFlights(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
         setError('Failed to load flights');
       }
@@ -120,7 +120,7 @@ const FlightsListPage = () => {
         <Typography color="error" mt={4}>{error}</Typography>
       ) : (
         <Grid container spacing={isMobile ? 1.5 : 3}>
-          {filteredFlights.map(flight => (
+          {Array.isArray(flights) && flights.map(flight => (
             <Grid item xs={12} sm={6} md={4} key={flight._id}>
               <Card sx={{ borderRadius: 3, boxShadow: 2, minWidth: isMobile ? '90vw' : 0, maxWidth: isMobile ? '95vw' : 'none', mx: isMobile ? 'auto' : 0 }}>
                 {flight.images?.[0] && (
