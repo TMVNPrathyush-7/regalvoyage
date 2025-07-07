@@ -33,6 +33,7 @@ const HotelDetailsPage = () => {
   const user = JSON.parse(localStorage.getItem('user'));
   const [userBookings, setUserBookings] = useState([]);
 
+  // Fetch hotel and reviews when id changes
   useEffect(() => {
     async function fetchHotel() {
       setLoading(true);
@@ -48,9 +49,16 @@ const HotelDetailsPage = () => {
     }
     fetchHotel();
     fetchReviews();
-    if (token && hotel) fetchUserBookings();
     // eslint-disable-next-line
-  }, [id, hotel]);
+  }, [id]);
+
+  // Fetch user bookings when token and hotel are available
+  useEffect(() => {
+    if (token && hotel) {
+      fetchUserBookings();
+    }
+    // eslint-disable-next-line
+  }, [token, hotel]);
 
   const fetchReviews = async () => {
     setReviewLoading(true);
