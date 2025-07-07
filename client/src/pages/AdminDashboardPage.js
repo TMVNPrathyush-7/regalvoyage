@@ -390,7 +390,10 @@ const AdminDashboardPage = () => {
     { field: 'name', headerName: 'Name', flex: 1 },
     { field: 'description', headerName: 'Description', flex: 2 },
     { field: 'cost', headerName: 'Cost', flex: 1, type: 'number' },
-    { field: 'date', headerName: 'Date', flex: 1, valueGetter: (params) => new Date(params.value).toLocaleDateString() },
+    { field: 'date', headerName: 'Date', flex: 1, valueGetter: (params) => {
+      const d = new Date(params.value);
+      return isNaN(d) ? '' : d.toLocaleDateString();
+    } },
     {
       field: 'actions',
       headerName: 'Actions',
