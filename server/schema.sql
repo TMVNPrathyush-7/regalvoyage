@@ -1,0 +1,25 @@
+-- Users table
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(10) NOT NULL DEFAULT 'user'
+);
+
+-- Tours table
+CREATE TABLE IF NOT EXISTS tours (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  description TEXT,
+  cost NUMERIC(10,2) NOT NULL,
+  date DATE NOT NULL
+);
+
+-- Bookings table
+CREATE TABLE IF NOT EXISTS bookings (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  tour_id INTEGER REFERENCES tours(id) ON DELETE CASCADE,
+  status VARCHAR(20) NOT NULL DEFAULT 'pending'
+); 
