@@ -41,9 +41,9 @@ const HomePage = () => {
         axios.get('/api/tours/flights'),
         axios.get('/api/tours/hotels'),
       ]);
-      setTours(toursRes.data);
-      setFlights(flightsRes.data);
-      setHotels(hotelsRes.data);
+      setTours(Array.isArray(toursRes.data) ? toursRes.data : []);
+      setFlights(Array.isArray(flightsRes.data) ? flightsRes.data : []);
+      setHotels(Array.isArray(hotelsRes.data) ? hotelsRes.data : []);
       setLoading(false);
     }
     fetchData();
@@ -51,9 +51,9 @@ const HomePage = () => {
 
   // For autocomplete options
   const cityOptions = Array.from(new Set([
-    ...flights.map(f => f.from),
-    ...flights.map(f => f.to),
-    ...tours.map(t => t.name.split(' ').slice(-1)[0]),
+    ...(Array.isArray(flights) ? flights.map(f => f.from) : []),
+    ...(Array.isArray(flights) ? flights.map(f => f.to) : []),
+    ...(Array.isArray(tours) ? tours.map(t => t.name.split(' ').slice(-1)[0]) : []),
   ])).filter(Boolean);
 
   // Hero search handler (demo only)
@@ -132,7 +132,7 @@ const HomePage = () => {
           Recommended Trips
         </Typography>
         <Grid container spacing={isMobile ? 1.5 : 3} sx={{ mb: isMobile ? 2 : 4 }}>
-          {tours.slice(0, 6).map(tour => (
+          {Array.isArray(tours) && tours.slice(0, 6).map(tour => (
             <Grid item xs={12} sm={6} md={4} key={tour._id}>
               <Card sx={{ borderRadius: 3, boxShadow: 2 }}>
                 <CardMedia
@@ -158,7 +158,7 @@ const HomePage = () => {
           Popular Flights
         </Typography>
         <Grid container spacing={isMobile ? 1.5 : 3} sx={{ mb: isMobile ? 2 : 4 }}>
-          {flights.slice(0, 6).map(flight => (
+          {Array.isArray(flights) && flights.slice(0, 6).map(flight => (
             <Grid item xs={12} sm={6} md={4} key={flight._id}>
               <Card sx={{ borderRadius: 3, boxShadow: 2 }}>
                 <CardContent sx={{ p: isMobile ? 1.5 : 2 }}>
@@ -178,7 +178,7 @@ const HomePage = () => {
           Top Hotels
         </Typography>
         <Grid container spacing={isMobile ? 1.5 : 3} sx={{ mb: isMobile ? 2 : 4 }}>
-          {hotels.slice(0, 6).map(hotel => (
+          {Array.isArray(hotels) && hotels.slice(0, 6).map(hotel => (
             <Grid item xs={12} sm={6} md={4} key={hotel._id}>
               <Card sx={{ borderRadius: 3, boxShadow: 2 }}>
                 <CardMedia
