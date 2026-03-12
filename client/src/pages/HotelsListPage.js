@@ -111,16 +111,30 @@ const HotelsListPage = () => {
         <Typography color="error" mt={4}>{error}</Typography>
       ) : (
         <Grid container spacing={isMobile ? 1.5 : 3}>
-          {Array.isArray(hotels) && hotels.map(hotel => (
+          {Array.isArray(filteredHotels) && filteredHotels.map(hotel => (
             <Grid item xs={12} sm={6} md={4} key={hotel._id}>
               <Card sx={{ borderRadius: 3, boxShadow: 2, minWidth: isMobile ? '90vw' : 0, maxWidth: isMobile ? '95vw' : 'none', mx: isMobile ? 'auto' : 0 }}>
-                {hotel.images?.[0] && (
+                {hotel.images?.[0] ? (
                   <img
                     src={hotel.images[0]}
                     alt={hotel.name}
                     style={{ height: isMobile ? 100 : 140, objectFit: 'cover', width: '100%', background: '#f5f5f5', borderTopLeftRadius: 12, borderTopRightRadius: 12 }}
+                    onError={e => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
                   />
-                )}
+                ) : null}
+                <Box
+                  display="none"
+                  alignItems="center"
+                  justifyContent="center"
+                  sx={{ height: isMobile ? 100 : 140, background: 'linear-gradient(135deg, #43a047 0%, #66bb6a 100%)', borderTopLeftRadius: 12, borderTopRightRadius: 12 }}
+                >
+                  <Typography variant="h4" fontWeight={700} color="white">
+                    🏨
+                  </Typography>
+                </Box>
                 <CardContent sx={{ p: isMobile ? 1.5 : 2 }}>
                   <Typography variant={isMobile ? 'subtitle1' : 'h6'} fontWeight={600}>{hotel.name} ({hotel.stars}★)</Typography>
                   <Rating value={hotel.stars || 4} precision={0.5} readOnly size="small" sx={{ mb: 1 }} />

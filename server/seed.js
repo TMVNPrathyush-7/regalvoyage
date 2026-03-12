@@ -12,8 +12,8 @@ const tours = [
     date: new Date('2025-08-10'),
     images: ['https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=800&q=80'], // Mumbai
     flights: [
-      { airline: 'IndiGo', from: 'Delhi', to: 'Mumbai', price: 4000, images: ['https://upload.wikimedia.org/wikipedia/commons/7/7b/IndiGo_Logo.svg'] },
-      { airline: 'Air India', from: 'Bangalore', to: 'Mumbai', price: 4500, images: ['https://upload.wikimedia.org/wikipedia/commons/2/2d/Air_India_Logo.svg'] }
+      { airline: 'IndiGo', from: 'Delhi', to: 'Mumbai', price: 4000, images: ['https://logo.clearbit.com/goindigo.in'] },
+      { airline: 'Air India', from: 'Bangalore', to: 'Mumbai', price: 4500, images: ['https://logo.clearbit.com/airindia.com'] }
     ],
     hotels: [
       { name: 'Taj Mahal Palace', stars: 5, pricePerNight: 8000, images: ['https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=800&q=80'] }, // Mumbai
@@ -27,8 +27,8 @@ const tours = [
     date: new Date('2025-09-15'),
     images: ['https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=800&q=80'], // Delhi
     flights: [
-      { airline: 'Vistara', from: 'Mumbai', to: 'Delhi', price: 4200, images: ['https://upload.wikimedia.org/wikipedia/commons/6/6b/Vistara_logo.svg'] },
-      { airline: 'SpiceJet', from: 'Chennai', to: 'Delhi', price: 4700, images: ['https://upload.wikimedia.org/wikipedia/commons/2/2a/SpiceJet_logo.svg'] }
+      { airline: 'Vistara', from: 'Mumbai', to: 'Delhi', price: 4200, images: ['https://logo.clearbit.com/airvistara.com'] },
+      { airline: 'SpiceJet', from: 'Chennai', to: 'Delhi', price: 4700, images: ['https://logo.clearbit.com/spicejet.com'] }
     ],
     hotels: [
       { name: 'The Leela Palace', stars: 5, pricePerNight: 9000, images: ['https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=800&q=80'] }, // Delhi
@@ -42,8 +42,8 @@ const tours = [
     date: new Date('2025-12-01'),
     images: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80'], // Goa
     flights: [
-      { airline: 'GoAir', from: 'Delhi', to: 'Goa', price: 5000, images: ['https://upload.wikimedia.org/wikipedia/commons/2/2c/Go_Air_logo.svg'] },
-      { airline: 'IndiGo', from: 'Bangalore', to: 'Goa', price: 4800, images: ['https://upload.wikimedia.org/wikipedia/commons/7/7b/IndiGo_Logo.svg'] }
+      { airline: 'GoAir', from: 'Delhi', to: 'Goa', price: 5000, images: ['https://logo.clearbit.com/goair.in'] },
+      { airline: 'IndiGo', from: 'Bangalore', to: 'Goa', price: 4800, images: ['https://logo.clearbit.com/goindigo.in'] }
     ],
     hotels: [
       { name: 'Grand Hyatt Goa', stars: 5, pricePerNight: 10000, images: ['https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80'] }, // Goa
@@ -57,8 +57,8 @@ const tours = [
     date: new Date('2025-10-05'),
     images: ['https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=800&q=80'], // Paris
     flights: [
-      { airline: 'Air France', from: 'Delhi', to: 'Paris', price: 55000, images: ['https://upload.wikimedia.org/wikipedia/commons/6/6e/Air_France_Logo.svg'] },
-      { airline: 'Lufthansa', from: 'Mumbai', to: 'Paris', price: 60000, images: ['https://upload.wikimedia.org/wikipedia/commons/6/6a/Lufthansa_Logo_2018.svg'] }
+      { airline: 'Air France', from: 'Delhi', to: 'Paris', price: 55000, images: ['https://logo.clearbit.com/airfrance.com'] },
+      { airline: 'Lufthansa', from: 'Mumbai', to: 'Paris', price: 60000, images: ['https://logo.clearbit.com/lufthansa.com'] }
     ],
     hotels: [
       { name: 'Le Meurice', stars: 5, pricePerNight: 25000, images: ['https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80'] }, // Paris
@@ -72,8 +72,8 @@ const tours = [
     date: new Date('2025-11-12'),
     images: ['https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80'], // Tokyo
     flights: [
-      { airline: 'Japan Airlines', from: 'Delhi', to: 'Tokyo', price: 70000, images: ['https://upload.wikimedia.org/wikipedia/commons/6/6e/Japan_Airlines_logo.svg'] },
-      { airline: 'ANA', from: 'Bangalore', to: 'Tokyo', price: 72000, images: ['https://upload.wikimedia.org/wikipedia/commons/2/2e/All_Nippon_Airways_logo.svg'] }
+      { airline: 'Japan Airlines', from: 'Delhi', to: 'Tokyo', price: 70000, images: ['https://logo.clearbit.com/jal.com'] },
+      { airline: 'ANA', from: 'Bangalore', to: 'Tokyo', price: 72000, images: ['https://logo.clearbit.com/ana.co.jp'] }
     ],
     hotels: [
       { name: 'Park Hyatt Tokyo', stars: 5, pricePerNight: 30000, images: ['https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=800&q=80'] }, // Tokyo
@@ -87,8 +87,8 @@ const tours = [
     date: new Date('2025-09-20'),
     images: ['https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?auto=format&fit=crop&w=800&q=80'], // London
     flights: [
-      { airline: 'British Airways', from: 'Delhi', to: 'London', price: 85000, images: ['https://upload.wikimedia.org/wikipedia/commons/6/6e/British_Airways_Logo.svg'] },
-      { airline: 'Virgin Atlantic', from: 'Mumbai', to: 'London', price: 83000, images: ['https://upload.wikimedia.org/wikipedia/commons/7/7b/Virgin_Atlantic_logo.svg'] }
+      { airline: 'British Airways', from: 'Delhi', to: 'London', price: 85000, images: ['https://logo.clearbit.com/britishairways.com'] },
+      { airline: 'Virgin Atlantic', from: 'Mumbai', to: 'London', price: 83000, images: ['https://logo.clearbit.com/virginatlantic.com'] }
     ],
     hotels: [
       { name: 'The Savoy', stars: 5, pricePerNight: 35000, images: ['https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?auto=format&fit=crop&w=800&q=80'] }, // London
@@ -102,8 +102,8 @@ const tours = [
     date: new Date('2025-08-25'),
     images: ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80'], // Bali
     flights: [
-      { airline: 'Garuda Indonesia', from: 'Chennai', to: 'Bali', price: 25000, images: ['https://upload.wikimedia.org/wikipedia/commons/2/2e/Garuda_Indonesia_logo.svg'] },
-      { airline: 'Singapore Airlines', from: 'Delhi', to: 'Bali', price: 27000, images: ['https://upload.wikimedia.org/wikipedia/commons/6/6e/Singapore_Airlines_Logo.svg'] }
+      { airline: 'Garuda Indonesia', from: 'Chennai', to: 'Bali', price: 25000, images: ['https://logo.clearbit.com/garuda-indonesia.com'] },
+      { airline: 'Singapore Airlines', from: 'Delhi', to: 'Bali', price: 27000, images: ['https://logo.clearbit.com/singaporeair.com'] }
     ],
     hotels: [
       { name: 'Luxury Resort Bali', stars: 5, pricePerNight: 20000, images: ['https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80'] }, // Bali
@@ -117,8 +117,8 @@ const tours = [
     date: new Date('2025-12-15'),
     images: ['https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80'], // NYC
     flights: [
-      { airline: 'United Airlines', from: 'Delhi', to: 'New York', price: 95000, images: ['https://upload.wikimedia.org/wikipedia/commons/6/6e/United_Airlines_Logo.svg'] },
-      { airline: 'Air India', from: 'Mumbai', to: 'New York', price: 97000, images: ['https://upload.wikimedia.org/wikipedia/commons/2/2d/Air_India_Logo.svg'] }
+      { airline: 'United Airlines', from: 'Delhi', to: 'New York', price: 95000, images: ['https://logo.clearbit.com/united.com'] },
+      { airline: 'Air India', from: 'Mumbai', to: 'New York', price: 97000, images: ['https://logo.clearbit.com/airindia.com'] }
     ],
     hotels: [
       { name: 'New York Hilton Midtown', stars: 4, pricePerNight: 22000, images: ['https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80'] }, // NYC
@@ -129,10 +129,7 @@ const tours = [
 
 async function seed() {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_URI);
     // Seed admin user
     const adminEmail = 'admin@regalvoyage.com';
     const adminPassword = 'admin123';

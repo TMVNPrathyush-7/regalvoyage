@@ -121,16 +121,30 @@ const FlightsListPage = () => {
         <Typography color="error" mt={4}>{error}</Typography>
       ) : (
         <Grid container spacing={isMobile ? 1.5 : 3}>
-          {Array.isArray(flights) && flights.map(flight => (
+          {Array.isArray(filteredFlights) && filteredFlights.map(flight => (
             <Grid item xs={12} sm={6} md={4} key={flight._id}>
               <Card sx={{ borderRadius: 3, boxShadow: 2, minWidth: isMobile ? '90vw' : 0, maxWidth: isMobile ? '95vw' : 'none', mx: isMobile ? 'auto' : 0 }}>
-                {flight.images?.[0] && (
+                {flight.images?.[0] ? (
                   <img
                     src={flight.images[0]}
                     alt={flight.airline}
                     style={{ height: isMobile ? 60 : 80, objectFit: 'contain', width: '100%', background: '#f5f5f5', borderTopLeftRadius: 12, borderTopRightRadius: 12 }}
+                    onError={e => {
+                      e.target.style.display = 'none';
+                      e.target.nextSibling.style.display = 'flex';
+                    }}
                   />
-                )}
+                ) : null}
+                <Box
+                  display="none"
+                  alignItems="center"
+                  justifyContent="center"
+                  sx={{ height: isMobile ? 60 : 80, background: 'linear-gradient(135deg, #1976d2 0%, #42a5f5 100%)', borderTopLeftRadius: 12, borderTopRightRadius: 12 }}
+                >
+                  <Typography variant="h4" fontWeight={700} color="white">
+                    {flight.airline?.[0] || '✈'}
+                  </Typography>
+                </Box>
                 <CardContent sx={{ p: isMobile ? 1.5 : 2 }}>
                   <Typography variant={isMobile ? 'subtitle1' : 'h6'} fontWeight={600}>{flight.airline}</Typography>
                   <Typography variant="body2" color="text.secondary" mb={1}>{flight.from} → {flight.to}</Typography>

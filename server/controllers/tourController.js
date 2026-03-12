@@ -136,7 +136,7 @@ async function deleteHotel(req, res) {
     if (!tour) return res.status(404).json({ message: 'Tour not found' });
     const hotel = tour.hotels.id(req.params.hotelId);
     if (!hotel) return res.status(404).json({ message: 'Hotel not found' });
-    hotel.remove();
+    hotel.deleteOne();
     await tour.save();
     res.json({ message: 'Hotel deleted' });
   } catch (err) {
@@ -179,7 +179,7 @@ async function deleteFlight(req, res) {
     if (!tour) return res.status(404).json({ message: 'Tour not found' });
     const flight = tour.flights.id(req.params.flightId);
     if (!flight) return res.status(404).json({ message: 'Flight not found' });
-    flight.remove();
+    flight.deleteOne();
     await tour.save();
     res.json({ message: 'Flight deleted' });
   } catch (err) {

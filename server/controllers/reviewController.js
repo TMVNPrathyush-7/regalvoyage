@@ -5,7 +5,7 @@ async function addReview(req, res) {
   try {
     const { resourceType, resourceId, rating, comment } = req.body;
     const review = await Review.create({
-      user: req.user._id,
+      user: req.user.id,
       resourceType,
       resourceId,
       rating,
@@ -31,7 +31,7 @@ async function getReviews(req, res) {
 // (Optional) Edit own review
 async function editReview(req, res) {
   try {
-    const review = await Review.findOne({ _id: req.params.id, user: req.user._id });
+    const review = await Review.findOne({ _id: req.params.id, user: req.user.id });
     if (!review) return res.status(404).json({ message: 'Review not found' });
     review.rating = req.body.rating;
     review.comment = req.body.comment;
@@ -45,7 +45,7 @@ async function editReview(req, res) {
 // (Optional) Delete own review
 async function deleteReview(req, res) {
   try {
-    const review = await Review.findOneAndDelete({ _id: req.params.id, user: req.user._id });
+    const review = await Review.findOneAndDelete({ _id: req.params.id, user: req.user.id });
     if (!review) return res.status(404).json({ message: 'Review not found' });
     res.json({ message: 'Review deleted' });
   } catch (err) {
