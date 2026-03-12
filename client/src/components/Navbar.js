@@ -5,10 +5,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import HotelIcon from '@mui/icons-material/Hotel';
-import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
-import TrainIcon from '@mui/icons-material/Train';
-import DirectionsBusIcon from '@mui/icons-material/DirectionsBus';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 
